@@ -1,0 +1,258 @@
+{
+  "projectUserId": "694e5ac6cdc5ba63a60a1614",
+  "deviceModel": "iPhone14,3",
+  "width": 1284,
+  "height": 2778,
+  "behaviours": [
+    {
+      "behaviourId": "level_started",
+      "level": 1,
+      "objectId": "",
+      "screen": "game",
+      "x": 0,
+      "y": 0,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:04.169Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 1,
+      "objectId": "Cube",
+      "screen": "game",
+      "x": 316,
+      "y": 860.000061,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:06.169Z"
+    },
+    {
+      "behaviourId": "level_completed",
+      "level": 1,
+      "objectId": "",
+      "screen": "game",
+      "x": 316,
+      "y": 860.000061,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:06.169Z"
+    },
+    {
+      "behaviourId": "level_started",
+      "level": 2,
+      "objectId": "",
+      "screen": "game",
+      "x": 316,
+      "y": 860.000061,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:07.392Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 2,
+      "objectId": "Capsule",
+      "screen": "game",
+      "x": 1097,
+      "y": 863.000061,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:09.325Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 2,
+      "objectId": "Sphere",
+      "screen": "game",
+      "x": 629,
+      "y": 845,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:10.125Z"
+    },
+    {
+      "behaviourId": "level_completed",
+      "level": 2,
+      "objectId": "",
+      "screen": "game",
+      "x": 629,
+      "y": 845,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:10.125Z"
+    },
+    {
+      "behaviourId": "level_started",
+      "level": 3,
+      "objectId": "",
+      "screen": "game",
+      "x": 629,
+      "y": 845,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:11.326Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 3,
+      "objectId": "Cube",
+      "screen": "game",
+      "x": 245,
+      "y": 891.9999,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:13.494Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 3,
+      "objectId": "Capsule",
+      "screen": "game",
+      "x": 1076,
+      "y": 963.999939,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:14.292Z"
+    },
+    {
+      "behaviourId": "button_clicked",
+      "level": 3,
+      "objectId": "retry_button",
+      "screen": "game",
+      "x": 130,
+      "y": 2697,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:16.629Z"
+    },
+    {
+      "behaviourId": "level_started",
+      "level": 3,
+      "objectId": "",
+      "screen": "game",
+      "x": 130,
+      "y": 2697,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:16.629Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 3,
+      "objectId": "Cube",
+      "screen": "game",
+      "x": 256,
+      "y": 861.999939,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:18.929Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 3,
+      "objectId": "Capsule",
+      "screen": "game",
+      "x": 1140,
+      "y": 887,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:19.659Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 3,
+      "objectId": "Capsule",
+      "screen": "game",
+      "x": 1119,
+      "y": 849.999939,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:20.093Z"
+    },
+    {
+      "behaviourId": "level_completed",
+      "level": 3,
+      "objectId": "",
+      "screen": "game",
+      "x": 1119,
+      "y": 849.999939,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:20.093Z"
+    },
+    {
+      "behaviourId": "level_started",
+      "level": 4,
+      "objectId": "",
+      "screen": "game",
+      "x": 1119,
+      "y": 849.999939,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:21.326Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 4,
+      "objectId": "Capsule",
+      "screen": "game",
+      "x": 1067,
+      "y": 919,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:23.229Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 4,
+      "objectId": "Capsule",
+      "screen": "game",
+      "x": 1059,
+      "y": 912,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:23.461Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 4,
+      "objectId": "Sphere",
+      "screen": "game",
+      "x": 558,
+      "y": 819.000061,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:23.928Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 4,
+      "objectId": "Sphere",
+      "screen": "game",
+      "x": 557,
+      "y": 839,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:24.128Z"
+    },
+    {
+      "behaviourId": "level_completed",
+      "level": 4,
+      "objectId": "",
+      "screen": "game",
+      "x": 557,
+      "y": 839,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:24.128Z"
+    },
+    {
+      "behaviourId": "level_started",
+      "level": 5,
+      "objectId": "",
+      "screen": "game",
+      "x": 557,
+      "y": 839,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:25.360Z"
+    },
+    {
+      "behaviourId": "shape_selected",
+      "level": 5,
+      "objectId": "Capsule",
+      "screen": "game",
+      "x": 1047,
+      "y": 912.999939,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:26.629Z"
+    },
+    {
+      "behaviourId": "level_failed",
+      "level": 5,
+      "objectId": "",
+      "screen": "game",
+      "x": 1047,
+      "y": 912.999939,
+      "version": "0.1",
+      "time": "2025-12-26T09:52:26.629Z"
+    }
+  ]
+}
