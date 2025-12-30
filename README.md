@@ -12,6 +12,10 @@ Recreate user behavior while playing the game to improve UI/UX and level design
 
 ## Usage
 
+### Requirement
+
+- Import **Newtonsoft.Json** from Unity **Package Manager**.
+
 ### Configuration
 
 1. Locate the `zeta_config.json` file in the project and fill in the information provided by the admin.
