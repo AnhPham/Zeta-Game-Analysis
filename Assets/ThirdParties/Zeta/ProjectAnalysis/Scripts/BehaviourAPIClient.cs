@@ -116,6 +116,11 @@ namespace Zeta.ProjectAnalysis
 
         protected IEnumerator PostBehavioursCoroutine(Action<BehaviourResponse> onSuccess, Action<string> onError)
         {
+            while (_sending)
+            {
+                yield return 0;
+            }
+
             _sending = true;
             
             // Create request body
