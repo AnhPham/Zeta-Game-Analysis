@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _configFile: {fileID: 4900000, guid: 3decb54d9ddb54c03b6c7883fe6b00f4, type: 3}
   _behaviourFeature: 1
+  _behaviourOverride: {fileID: 0}
   _logFeature: 1
+  _logOverride: {fileID: 0}
