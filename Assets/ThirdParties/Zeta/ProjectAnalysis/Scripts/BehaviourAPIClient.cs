@@ -94,11 +94,31 @@ namespace Zeta.ProjectAnalysis
             {
                 _instance = this;
                 DontDestroyOnLoad(gameObject);
+
+                Application.logMessageReceived += Application_logMessageReceived;
             }
             else
             {
                 Destroy(gameObject);
             }
+        }
+
+        protected virtual void Application_logMessageReceived(string condition, string stackTrace, LogType type)
+        {
+            if (type == LogType.Log || type == LogType.Warning)
+                return;
+                
+            Add("error", GetCurrentLevel(), GetCurrentScreen(), condition);
+        }
+
+        protected virtual int GetCurrentLevel()
+        {
+            return 0;
+        }
+
+        protected virtual string GetCurrentScreen()
+        {
+            return string.Empty;
         }
 
         /// <summary>

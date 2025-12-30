@@ -6,6 +6,7 @@ public class Gesture : MonoBehaviour
 {
     [SerializeField] Animation _animation;
     [SerializeField] RectTransform _rectTransform;
+    [SerializeField] RectTransform _canvas;
 
     public void Press()
     {
@@ -16,7 +17,7 @@ public class Gesture : MonoBehaviour
     public void Tap(float x, float y)
     {
         _animation.Stop();
-        _rectTransform.anchoredPosition = new Vector2(x, y);
+        _rectTransform.anchoredPosition = new Vector2(x / _canvas.localScale.x, y / _canvas.localScale.y);
         _animation.Play("TapNoLoop");
     }
 

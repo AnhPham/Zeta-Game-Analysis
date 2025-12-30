@@ -15,6 +15,8 @@ public class DemoGameReplayer : MonoBehaviour
     [SerializeField] Text _userIdText;
     [SerializeField] GameObject _startReplayButton;
     [SerializeField] GameObject _stopReplayButton;
+    [SerializeField] GameObject _error;
+    [SerializeField] Text _errorText;
 
     BehaviourRequest _behaviourData;
 
@@ -85,30 +87,45 @@ public class DemoGameReplayer : MonoBehaviour
 
             var currentLevel = behaviour.level;
 
-            switch (behaviour.behaviourId)
+            try
             {
-                case "level_started":
-                    _gameController.SetLevel(currentLevel);
-                    _gameController.GenerateLevel();
-                    break;
+                switch (behaviour.behaviourId)
+                {
+                    case "level_started":
+                        _gameController.SetLevel(currentLevel);
+                        _gameController.GenerateLevel();
+                        break;
 
-                case "shape_selected":
-                    var shape = GetShape(behaviour.objectId);
-                    if (shape != null)
-                    {
-                        _gameController.ResetShapes();
-                        _gameController.Select(shape);
-                    }
-                    break;
+                    case "shape_selected":
+                        var shape = GetShape(behaviour.objectId);
+                        if (shape != null)
+                        {
+                            _gameController.ResetShapes();
+                            _gameController.Select(shape);
+                        }
+                        break;
 
-                case "button_clicked":
-                    switch (behaviour.objectId)
-                    {
-                        case "retry_button":
-                            _gameController.OnRetryButtonTap();
-                            break;
-                    }
-                    break;
+                    case "button_clicked":
+                        switch (behaviour.objectId)
+                        {
+                            case "retry_button":
+                                _gameController.OnRetryButtonTap();
+                                break;
+
+                            case "null_button":
+                                _gameController.OnNullSimulationButtonTap();
+                                break;
+                        }
+                        break;
+
+                    case "error":
+                        StartCoroutine(ShowError(behaviour.objectId));
+                        break;
+                }                
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
             }
 
             index++;
@@ -136,5 +153,15 @@ public class DemoGameReplayer : MonoBehaviour
         }
 
         return null;
+    }
+
+    IEnumerator ShowError(string error)
+    {
+        _error.SetActive(true);
+        _errorText.text = error;
+
+        yield return new WaitForSeconds(1f);
+
+        _error.SetActive(false);
     }
 }

@@ -29,6 +29,13 @@ public class DemoGameController : MonoBehaviour
         GenerateLevel();
     }
 
+    public void OnNullSimulationButtonTap()
+    {
+        BehaviourAPIClient.Add(behaviourId: "button_clicked", level: _currentLevel, screen: "game", objectId: "null_button");
+        GameObject go = null;
+        Debug.Log(go.transform);
+    }
+
     public void SetLevel(int level)
     {
         _currentLevel = level;

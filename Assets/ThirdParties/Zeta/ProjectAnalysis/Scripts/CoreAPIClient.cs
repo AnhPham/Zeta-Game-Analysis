@@ -18,7 +18,9 @@ namespace Zeta.ProjectAnalysis
         [Header("API Configuration")]
         [SerializeField] protected TextAsset _configFile;
         [SerializeField] protected bool _behaviourFeature;
+        [SerializeField] protected BehaviourAPIClient _behaviourOverride;
         [SerializeField] protected bool _logFeature;
+        [SerializeField] protected LogAPIClient _logOverride;
 
         protected static CoreAPIClient _instance;
         public static CoreAPIClient Instance
@@ -52,14 +54,30 @@ namespace Zeta.ProjectAnalysis
 
                 if (_behaviourFeature)
                 {
-                    var behaviour = new GameObject("BehaviourAPIClient");
-                    behaviour.AddComponent<BehaviourAPIClient>();
+                    if (_behaviourOverride == null)
+                    {
+                        var behaviour = new GameObject("BehaviourAPIClient");
+                        behaviour.AddComponent<BehaviourAPIClient>();
+                    }
+                    else
+                    {
+                        var behaviour = Instantiate(_behaviourOverride);
+                        behaviour.name = "BehaviourAPIClient";
+                    }
                 }
 
                 if (_logFeature)
                 {
-                    var log = new GameObject("LogAPIClient");
-                    log.AddComponent<LogAPIClient>();
+                    if (_logOverride == null)
+                    {
+                        var log = new GameObject("LogAPIClient");
+                        log.AddComponent<LogAPIClient>();
+                    }
+                    else
+                    {
+                        var log = Instantiate(_logOverride);
+                        log.name = "LogAPIClient";
+                    }
                 }
             }
             else
