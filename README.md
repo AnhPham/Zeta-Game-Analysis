@@ -47,17 +47,27 @@ BehaviourAPIClient.Add(
 ```csharp
 BehaviourAPIClient.Add(
     behaviourId: "button_clicked",
-    level: 3,
+    level: 2,
     screen: "home",
     objectId: "settings_button"
+);
+```
+
+#### When the user clicks but does not touch any element or button
+
+```csharp
+BehaviourAPIClient.Add(
+    behaviourId: "miss_clicked",
+    level: 3,
+    screen: "game"
 );
 ```
 
 #### When the user starts / completes / fails a level
 
 ```csharp
-BehaviourAPIClient.Add(behaviourId: "level_started", level: 5, screen: "game");
-BehaviourAPIClient.Add(behaviourId: "level_completed", level: 5, screen: "game");
+BehaviourAPIClient.Add(behaviourId: "level_started", level: 4, screen: "game");
+BehaviourAPIClient.Add(behaviourId: "level_completed", level: 4, screen: "game");
 BehaviourAPIClient.Add(behaviourId: "level_failed", level: 5, screen: "game");
 ```
 

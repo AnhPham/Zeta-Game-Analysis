@@ -72,6 +72,7 @@ public class DemoGameReplayer : MonoBehaviour
             {
                 case "shape_selected":
                 case "button_clicked":
+                case "miss_clicked":
                     yield return new WaitForSeconds(delay - 0.33f);
                     _gesture.Tap(behaviour.x, behaviour.y);
                     yield return new WaitForSeconds(0.33f);

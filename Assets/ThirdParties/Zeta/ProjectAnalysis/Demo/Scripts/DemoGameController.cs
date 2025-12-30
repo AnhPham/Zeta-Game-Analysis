@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Zeta.ProjectAnalysis;
 
@@ -18,6 +19,9 @@ public class DemoGameController : MonoBehaviour
     int _currentIndex = 0;
     int _currentLevel = 1;
     bool _playable = true;
+    EventSystem _eventSystem;
+    PointerEventData _ped;
+    readonly List<RaycastResult> _hits = new();
 
     public void OnRetryButtonTap()
     {
@@ -93,6 +97,12 @@ public class DemoGameController : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        _eventSystem = EventSystem.current;
+        _ped = new PointerEventData(_eventSystem);
+    }
+
     void Start()
     {
         SetCurrentLevel();
@@ -104,15 +114,27 @@ public class DemoGameController : MonoBehaviour
     {
         if (_playable && Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            _ped.Reset();
+            _ped.position = Input.mousePosition;
+            _hits.Clear();
 
-            if (Physics.Raycast(ray, out hit))
+            _eventSystem.RaycastAll(_ped, _hits);
+            if (_hits.Count == 0) 
             {
-                var demoShape = hit.collider.gameObject.GetComponent<DemoShape>();
-                if (demoShape != null)
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    Select(demoShape);
+                    var demoShape = hit.collider.gameObject.GetComponent<DemoShape>();
+                    if (demoShape != null)
+                    {
+                        Select(demoShape);
+                    }
+                }
+                else
+                {
+                    BehaviourAPIClient.Add(behaviourId: "miss_clicked", level: _currentLevel, screen: "game");
                 }
             }
         }
