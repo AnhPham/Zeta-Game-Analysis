@@ -25,8 +25,9 @@ namespace Zeta.ProjectAnalysis
     public class BehaviourRequest
     {
         public string projectUserId; // optional
-        public string projectId;     // required nếu không có projectUserId
-        public string deviceModel;   // required nếu không có projectUserId
+        public string projectId;     // required if no projectUserId
+        public string deviceModel;   // required if no projectUserId
+        public string platform;
         public int width;
         public int height;
         public List<BehaviourData> behaviours;
@@ -101,11 +102,10 @@ namespace Zeta.ProjectAnalysis
         }
 
         /// <summary>
-        /// Gửi nhiều behaviours lên server
+        /// Send multi behaviours to server
         /// </summary>
-        /// <param name="behaviours">Danh sách behaviours cần gửi</param>
-        /// <param name="onSuccess">Callback khi thành công</param>
-        /// <param name="onError">Callback khi có lỗi</param>
+        /// <param name="onSuccess">Callback on success</param>
+        /// <param name="onError">Callback on error</param>
         public void PostBehaviours(Action<BehaviourResponse> onSuccess = null, Action<string> onError = null)
         {
             if (_state != State.Default)
@@ -118,12 +118,13 @@ namespace Zeta.ProjectAnalysis
         {
             _sending = true;
             
-            // Tạo request body
+            // Create request body
             BehaviourRequest request = new BehaviourRequest
             {
                 projectUserId = PlayerPrefs.GetString("ZETA_PROJECT_USER_ID", null),
                 projectId = CoreAPIClient.Instance.Configuration.project_id,
                 deviceModel = SystemInfo.deviceModel,
+                platform = Application.platform.ToString(),
                 width = Screen.width,
                 height = Screen.height,
                 behaviours = _behaviourList
@@ -132,7 +133,7 @@ namespace Zeta.ProjectAnalysis
             string jsonBody = JsonConvert.SerializeObject(request);
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);
 
-            // Tạo UnityWebRequest
+            // Create UnityWebRequest
             using (UnityWebRequest unityRequest = UnityWebRequest.PostWwwForm(Path.Combine(CoreAPIClient.Instance.Configuration.base_url, "behaviour"), "POST"))
             {
                 unityRequest.uploadHandler = new UploadHandlerRaw(bodyRaw);
@@ -140,10 +141,10 @@ namespace Zeta.ProjectAnalysis
                 unityRequest.SetRequestHeader("Content-Type", "application/json");
                 unityRequest.SetRequestHeader("Authorization", "Bearer " + CoreAPIClient.Instance.Configuration.api_key);
 
-                // Gửi request
+                // Send request
                 yield return unityRequest.SendWebRequest();
 
-                // Xử lý response
+                // Handle response
                 if (unityRequest.result == UnityWebRequest.Result.Success)
                 {
                     try
@@ -153,8 +154,6 @@ namespace Zeta.ProjectAnalysis
                         
                         if (response.success)
                         {
-                            //Debug.Log($"Successfully posted {response.results.Count} behaviours");
-
                             if (response != null && !string.IsNullOrEmpty(response.projectUserId))
                             {
                                 PlayerPrefs.SetString("ZETA_PROJECT_USER_ID", response.projectUserId);
@@ -174,21 +173,18 @@ namespace Zeta.ProjectAnalysis
                                     errorMsg += $"- {err.error}\n";
                                 }
                             }
-                            //Debug.LogError(errorMsg);
                             onError?.Invoke(errorMsg);
                         }
                     }
                     catch (Exception e)
                     {
                         string errorMsg = $"Error parsing response: {e.Message}";
-                        //Debug.LogError(errorMsg);
                         onError?.Invoke(errorMsg);
                     }
                 }
                 else
                 {
                     string errorMsg = $"Request failed: {unityRequest.error} (Status: {unityRequest.responseCode})";
-                    //Debug.LogError(errorMsg);
                     onError?.Invoke(errorMsg);
                 }
 
@@ -199,9 +195,6 @@ namespace Zeta.ProjectAnalysis
             }
         }
 
-        /// <summary>
-        /// Helper method để tạo BehaviourData dễ dàng
-        /// </summary>
         public void CreateBehaviourData(string behaviourId, int level, string screen, string objectId, DateTime? time = null)
         {
             if (_state != State.Default)
