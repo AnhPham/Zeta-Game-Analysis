@@ -1,0 +1,2 @@
+# Thư mục này dùng để lưu các trained model (.onnx files)
+# Sau khi train xong, copy file .onnx vào đây để sử dụng trong Unity

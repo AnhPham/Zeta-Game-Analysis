@@ -129,3 +129,31 @@ BehaviourAPIClient.CurrentState = BehaviourAPIClient.State.Replaying;
 
 - `behaviourId`, `level`, `screen`, and `objectId` are the values you manually added and sent.
 - `(x, y)` tap coordinates, `version`, and `time` are automatically collected and sent by the system.
+
+---
+
+## AI Training với ML-Agents
+
+Project này bao gồm một AI agent được train bằng Unity ML-Agents để có thể chơi game demo tự động.
+
+### Tổng Quan
+
+AI agent sẽ học cách chọn đúng các hình (Cube, Sphere, Capsule) theo thứ tự mà level yêu cầu, sử dụng reinforcement learning (PPO algorithm).
+
+### Quick Start
+
+1. **Cài đặt Unity ML-Agents**: Thêm package `com.unity.ml-agents` vào project
+2. **Setup Scene**: 
+   - Add component `DemoAIAgent` vào một GameObject
+   - Add component `DemoAIGameController` để quản lý AI
+3. **Train**: Xem chi tiết trong [README_ML_AGENTS.md](Assets/ThirdParties/Zeta/ProjectAnalysis/Demo/ML-Agents/README_ML_AGENTS.md)
+
+### Files Liên Quan
+
+- `DemoAIAgent.cs`: AI Agent script sử dụng ML-Agents
+- `DemoAIGameController.cs`: Wrapper để tích hợp AI với game
+- `DemoGameControllerAIExtension.cs`: Extension methods để AI truy cập game state
+- `demo_game_config.yaml`: Config file cho training
+- `README_ML_AGENTS.md`: Hướng dẫn chi tiết về setup và training
+
+Xem [README_ML_AGENTS.md](Assets/ThirdParties/Zeta/ProjectAnalysis/Demo/ML-Agents/README_ML_AGENTS.md) để biết thêm chi tiết.
